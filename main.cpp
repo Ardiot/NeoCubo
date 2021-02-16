@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 
- // poniendo comentarios 
+ // poniendo comentarios skere
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
@@ -884,6 +884,69 @@ int devuelveDireccionSalida(int posicion[3]){
   
 }
 //
+void actualizarTodobien(int posicion[3],Neopixel m1 )
+{
+for (int i =0, aux =0 ; i< 8 ; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara1[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara1[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } // primer for 
+    m1.show();
+    //TENEMOS EL SUPERPROBLEMON DE CARA1 CARA2 CARA3 ...
+}
+
 void actualizarTodo(int posicion[3] )//comentario del carlos de 2021. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
 {
   Serial.print("\nactualizar todo ");
