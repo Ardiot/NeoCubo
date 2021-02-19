@@ -1,4 +1,13 @@
-//Libreria NeoCubo
+/*
+Libreria NeoCubo 
+El array de posicion[3], muestra la cara actual, la fila y la columna respectivamente(la cara si o si, lo demás no se)
+La direccion dirección puede ser 1:derecha 2:izquierda 3:arriba 4:abajo
+
+
+Creada por Carlos Ardiot 2018-2021 Github:@Ardiot  Twitter:@Ardiot328
+*/
+
+
 
 void inicializar(Adafruit_NeoPixel faces[6],uint_t brillo ){
 
@@ -14,7 +23,7 @@ faces[i].show();
 void moverPunto(int posicion[3] ,int  direccion ){
   Serial.print("ahora y ya estoy en mover el punto ");
   int direccionaux = 0 ;
-  switch (direccion)
+  switch (direccion)//No se muy bien que hace, vale si, muevve la posicion de punto arriba,abajo,izq o dere (PARA QUE TENEMOS DIRECCIONAUX???)
   {
     case 1 : posicion[2]++; //derecha
              direccionaux=1;
@@ -36,8 +45,9 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
   if( (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 ) ) // si NO nos  hemos salido de la cara pues actualizamos 
   {
-      switch( posicion[0] )
-      {
+      switch( posicion[0] )//Esta lo que hace es mover el punto, y en caso de que lo mueva a una pared lo devuelve a donde estaba(es lo que hace el if vamos) 
+      {                    //Este switch hay que quitarlo, se repite todo el rato lo mismo(metemos las caras en un array y en vez del case x ponemos directamente el if else y en vez
+                            //de cara1[posicio[1]][posicion[2]] ponemos caras[posicion[0]][posicio[1]][posicion[2]]
         case 1 : 
         {
           if( cara1[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
@@ -210,10 +220,13 @@ void moverPunto(int posicion[3] ,int  direccion ){
       
     //actualixamos las matrices y nuesto punto tambien si no esta el punto acupado ws decir , que no haya una pared  
     Serial.print("no nos hemos salido asi que solamente actualizamos ");
-    //actualizarTodo(posicion);
+     
+    actualizarTodo(posicion);//Esto estaba descomentado porque es redundante con el que esta dentro del case de switch pero no se 
     
   }//fin del if 
-  else // si no hay que ver por donde nos hemos salido 
+
+
+  else // si no hay que ver por donde nos hemos salido Son todos del tipo: Si estamos en la cara X y se nos ha salido por Y entonces (con Y siendo arriba,abajo,izq,dere)
   {
     devuelta=devuelveDireccionSalida(posicion) ;
     int cero = posicion[0] ;
@@ -713,7 +726,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
 }
 
-int devuelveDireccionSalida(int posicion[3]){
+int devuelveDireccionSalida(int posicion[3]){ //Esta funcion creo que solo  la llamamos desde dentro de moverPunto
   
   if( posicion[2]<0 || posicion[2]>= N)   //si las filas estan mal , o menos 1 o 8 
   {

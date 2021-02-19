@@ -32,7 +32,7 @@ Adafruit_NeoPixel m3 = Adafruit_NeoPixel(NUMPIXELS, PIN3, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel m4 = Adafruit_NeoPixel(NUMPIXELS, PIN4, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel m5 = Adafruit_NeoPixel(NUMPIXELS, PIN5, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel m6 = Adafruit_NeoPixel(NUMPIXELS, PIN6, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel faces[6]={m1,m3,m3,m4,m5,m6};
+Adafruit_NeoPixel neofaces[6]={m1,m3,m3,m4,m5,m6};
  
     
 int cara1 [8][8]={  {1,1,1,1,1,1,1,1},
@@ -96,18 +96,21 @@ int brillo = 30;
 
  void setup(){
 Serial.begin(9600);
-  inicializar(faces,brillo);
+  inicializar(neofaces,brillo);
   actualizarTodo(posicion);
    
 }
    
    
 void loop()
-{
+{//tenemos alguna funcion para poner algun punto en un sitio dado directamente???
+//si hacemos una de esas alomejor solo con esa que pone el punto y despues con logica de programacion ya todo aunqeu alomejor lo que estamos haciendo es lo mismo
+// es decir solo actuamos sobre las matrices y las vamos pintando, rollo se puede pintar el nuevo punto en la nueva posicion? si pues lo ponemos en la matriz y actualizamos todo ,
+//que no se puede pues no hacemos nada y ya, aun asi seguimos necesitando la chuleta de saltos de cara que tenemos en el folio pero solo eso ( yo creo que sería igual en el fondo...)
   
-  delay(1000);
+  delay(2000);
   dire =  random(1,5);
-  
+  //probar esto en vez de poniendolo random poniendolo como entrada por el monitor serial 
   Serial.print( "lo movemos en la direccion : " );
   Serial.println(dire);
   Serial.print("despues va el moverPunto \n ");
