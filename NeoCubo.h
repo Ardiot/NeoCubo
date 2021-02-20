@@ -41,16 +41,11 @@ void moverPunto(int posicion[3] ,int  direccion ){
              direccionaux=4;
           break;
     
-  } // (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 )
+  } 
   
-  if( (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 ) ) // si NO nos  hemos salido de la cara pues actualizamos 
+  if( (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 ) ) // si NO nos  hemos salido de la cara  actualizamos 
   {
-      switch( posicion[0] )//Esta lo que hace es mover el punto, y en caso de que lo mueva a una pared lo devuelve a donde estaba(es lo que hace el if vamos) 
-      {                    //Este switch hay que quitarlo, se repite todo el rato lo mismo(metemos las caras en un array y en vez del case x ponemos directamente el if else y en vez
-                            //de cara1[posicio[1]][posicion[2]] ponemos caras[posicion[0]][posicio[1]][posicion[2]]
-        case 1 : 
-        {
-          if( cara1[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+      if( caras[posicion[0]][posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir, que hay pared devolvemos el punto a donde estaba
             {
               switch(direccionaux)
               {
@@ -71,150 +66,6 @@ void moverPunto(int posicion[3] ,int  direccion ){
             }
             else 
             actualizarTodo(posicion);
-          
-          break ;
-        }
-
-        case 2 : 
-        {
-          if( cara2[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
-            {
-              switch(direccionaux)
-              {
-                case 1 : posicion[2]--;
-                  break;
-
-                case 2 : posicion[2]++;
-                  break;
-
-                case 3 : posicion[1]--;
-                  break;
-
-                case 4 : posicion[1]++;
-                  break;
-                  
-              }
-              
-            }
-            else 
-            actualizarTodo(posicion);
-          
-          break ;
-        }
-
-        case 3 : 
-        {
-          if( cara3[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
-            {
-              switch(direccionaux)
-              {
-                case 1 : posicion[2]--;
-                  break;
-
-                case 2 : posicion[2]++;
-                  break;
-
-                case 3 : posicion[1]--;
-                  break;
-
-                case 4 : posicion[1]++;
-                  break;
-                  
-              }
-              
-            }
-            else 
-            actualizarTodo(posicion);
-          
-          break ;
-        }
-
-        case 4 : 
-        {
-          if( cara4[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
-            {
-              switch(direccionaux)
-              {
-                case 1 : posicion[2]--;
-                  break;
-
-                case 2 : posicion[2]++;
-                  break;
-
-                case 3 : posicion[1]--;
-                  break;
-
-                case 4 : posicion[1]++;
-                  break;
-                  
-              }
-              
-            }
-            else 
-            actualizarTodo(posicion);
-          
-          break ;
-        }
-
-        case 5 : 
-        {
-          if( cara5[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
-            {
-              switch(direccionaux)
-              {
-                case 1 : posicion[2]--;
-                  break;
-
-                case 2 : posicion[2]++;
-                  break;
-
-                case 3 : posicion[1]--;
-                  break;
-
-                case 4 : posicion[1]++;
-                  break;
-                  
-              }
-              
-            }
-            else 
-            actualizarTodo(posicion);
-          
-          break ;
-        }
-
-        case 6 : 
-        {
-          if( cara6[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
-            {
-              switch(direccionaux)
-              {
-                case 1 : posicion[2]--;
-                  break;
-
-                case 2 : posicion[2]++;
-                  break;
-
-                case 3 : posicion[1]--;
-                  break;
-
-                case 4 : posicion[1]++;
-                  break;
-                  
-              }
-              
-            }
-            else 
-            actualizarTodo(posicion);
-          
-          break ;
-        }
-
-
-        
-      }//fin del switch posicion 0 
-//todo dentro del de si no nos hemos salido 
-
 
 
       
@@ -226,7 +77,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
   }//fin del if 
 
 
-  else // si no hay que ver por donde nos hemos salido Son todos del tipo: Si estamos en la cara X y se nos ha salido por Y entonces (con Y siendo arriba,abajo,izq,dere)
+  else // si no hay que ver por donde nos hemos salido. Son todos del tipo: Si estamos en la cara X y se nos ha salido por Y entonces (con Y siendo arriba,abajo,izq,dere)
   {
     devuelta=devuelveDireccionSalida(posicion) ;
     int cero = posicion[0] ;
@@ -726,7 +577,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
 }
 
-int devuelveDireccionSalida(int posicion[3]){ //Esta funcion creo que solo  la llamamos desde dentro de moverPunto
+int devuelveDireccionSalida(int posicion[3]){ //Esta funcion creo que solo  la llamamos desde dentro de moverPunto, deberia ser privada
   
   if( posicion[2]<0 || posicion[2]>= N)   //si las filas estan mal , o menos 1 o 8 
   {
