@@ -45,7 +45,11 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
   if( (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 ) ) // si NO nos  hemos salido de la cara  actualizamos 
   {
-      if( caras[posicion[0]-1][posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir, que hay pared devolvemos el punto a donde estaba
+      switch( posicion[0] )
+      {
+        case 1 : 
+        {
+          if( cara1[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
             {
               switch(direccionaux)
               {
@@ -66,6 +70,151 @@ void moverPunto(int posicion[3] ,int  direccion ){
             }
             else 
             actualizarTodo(posicion);
+          
+          break ;
+        }
+
+        case 2 : 
+        {
+          if( cara2[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+            {
+              switch(direccionaux)
+              {
+                case 1 : posicion[2]--;
+                  break;
+
+                case 2 : posicion[2]++;
+                  break;
+
+                case 3 : posicion[1]--;
+                  break;
+
+                case 4 : posicion[1]++;
+                  break;
+                  
+              }
+              
+            }
+            else 
+            actualizarTodo(posicion);
+          
+          break ;
+        }
+
+        case 3 : 
+        {
+          if( cara3[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+            {
+              switch(direccionaux)
+              {
+                case 1 : posicion[2]--;
+                  break;
+
+                case 2 : posicion[2]++;
+                  break;
+
+                case 3 : posicion[1]--;
+                  break;
+
+                case 4 : posicion[1]++;
+                  break;
+                  
+              }
+              
+            }
+            else 
+            actualizarTodo(posicion);
+          
+          break ;
+        }
+
+        case 4 : 
+        {
+          if( cara4[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+            {
+              switch(direccionaux)
+              {
+                case 1 : posicion[2]--;
+                  break;
+
+                case 2 : posicion[2]++;
+                  break;
+
+                case 3 : posicion[1]--;
+                  break;
+
+                case 4 : posicion[1]++;
+                  break;
+                  
+              }
+              
+            }
+            else 
+            actualizarTodo(posicion);
+          
+          break ;
+        }
+
+        case 5 : 
+        {
+          if( cara5[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+            {
+              switch(direccionaux)
+              {
+                case 1 : posicion[2]--;
+                  break;
+
+                case 2 : posicion[2]++;
+                  break;
+
+                case 3 : posicion[1]--;
+                  break;
+
+                case 4 : posicion[1]++;
+                  break;
+                  
+              }
+              
+            }
+            else 
+            actualizarTodo(posicion);
+          
+          break ;
+        }
+
+        case 6 : 
+        {
+          if( cara6[posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir , hay pared 
+            {
+              switch(direccionaux)
+              {
+                case 1 : posicion[2]--;
+                  break;
+
+                case 2 : posicion[2]++;
+                  break;
+
+                case 3 : posicion[1]--;
+                  break;
+
+                case 4 : posicion[1]++;
+                  break;
+                  
+              }
+              
+            }
+            else 
+            actualizarTodo(posicion);
+          
+          break ;
+        }
+
+
+        
+      }//fin del switch posicion 0 
+//todo dentro del de si no nos hemos salido 
+
+
 
 
       
