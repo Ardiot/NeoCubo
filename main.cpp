@@ -88,11 +88,13 @@ int cara6 [8][8]={  {0,0,0,0,0,0,0,0},
           {0,0,0,0,0,0,0,0},
           {1,1,1,1,1,1,1,1},
           {1,1,1,1,1,1,1,1} };   
-int N = 8 ; 
+
+int caras[6][8][8]={cara1,cara2,cara3,cara4,cara5,cara6};
+int N = 8; 
 int posicion[3]={1,6,4};
-int dire ;
-int devuelta =0;
-int brillo = 30;
+int dire;
+int devuelta=0;
+int brillo=30;
 
  void setup(){
 Serial.begin(9600);
@@ -109,7 +111,9 @@ void loop()
 //que no se puede pues no hacemos nada y ya, aun asi seguimos necesitando la chuleta de saltos de cara que tenemos en el folio pero solo eso ( yo creo que sería igual en el fondo...)
   
   delay(2000);
-  dire =  random(1,5);
+  //dire =  random(1,5);
+  dire =  1;
+  
   //probar esto en vez de poniendolo random poniendolo como entrada por el monitor serial 
   Serial.print( "lo movemos en la direccion : " );
   Serial.println(dire);

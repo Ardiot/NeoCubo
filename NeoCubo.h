@@ -45,7 +45,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
   if( (posicion[1]<N && posicion[1]>= 0 ) &&  (posicion[2]<N && posicion[2]>= 0 ) ) // si NO nos  hemos salido de la cara  actualizamos 
   {
-      if( caras[posicion[0]][posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir, que hay pared devolvemos el punto a donde estaba
+      if( caras[posicion[0]-1][posicion[1]][posicion[2]] == 1 ) //si esta con un uno , es decir, que hay pared devolvemos el punto a donde estaba
             {
               switch(direccionaux)
               {
@@ -102,7 +102,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
               {
                 case 3 : //arriba
                   {
-                    if( cara5[posicion[2] ][posicion[1]] != 1 ) // si nos podemos mover 
+                    if( cara5[posicion[2]][posicion[1]] != 1 ) // si nos podemos mover 
                     {
                       posicion[0]=5 ;
                       int aux = posicion[1];
@@ -577,7 +577,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
 }
 
-int devuelveDireccionSalida(int posicion[3]){ //Esta funcion creo que solo  la llamamos desde dentro de moverPunto, deberia ser privada
+int devuelveDireccionSalida(int posicion[3]){ //Esta funcion solo la llamamos desde dentro de moverPunto, deberia ser privada
   
   if( posicion[2]<0 || posicion[2]>= N)   //si las filas estan mal , o menos 1 o 8 
   {
@@ -683,7 +683,7 @@ for (int i =0, aux =0 ; i< 8 ; i++ )
     //TENEMOS EL SUPERPROBLEMON DE CARA1 CARA2 CARA3 ...
 }
 
-void actualizarTodo(int posicion[3] )//comentario del carlos de 2021. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
+void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede reducir la funcion. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
 {
   Serial.print("\nactualizar todo ");
   Serial.print(posicion[0]);
