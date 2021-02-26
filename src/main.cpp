@@ -38,8 +38,8 @@ Adafruit_NeoPixel neofaces[6]={m1,m3,m3,m4,m5,m6};
 int cara1 [8][8]={  {0,1,1,1,1,1,1,1},
           {0,0,0,0,0,0,0,0},
           {0,0,1,1,1,1,0,0},
-          {0,0,1,0,0,1,0,0},
-          {0,0,1,0,0,1,0,0},
+          {0,0,0,0,0,0,0,0},
+          {0,0,0,0,0,0,0,0},
           {0,0,1,1,1,1,0,0},
           {0,1,0,0,0,0,0,0},
           {1,0,0,0,0,0,0,0} };
@@ -91,7 +91,7 @@ int cara6 [8][8]={  {0,0,0,0,0,0,0,0},
 
 //Estas variables deberían estar en el .h
 int N = 8; 
-int posicion[3]={1,6,7};
+int posicion[3]={1,6,6};
 int dire;
 int devuelta=0;
 int brillo=100;//A 30 consume 0.3A y a 60 1,5A
@@ -99,7 +99,9 @@ int brillo=100;//A 30 consume 0.3A y a 60 1,5A
 
  void setup(){
 Serial.begin(9600);
+
   inicializar(neofaces,brillo);
+  prueba();
   actualizarTodo(posicion);
    
 }
@@ -111,7 +113,7 @@ void loop()
 // es decir solo actuamos sobre las matrices y las vamos pintando, rollo se puede pintar el nuevo punto en la nueva posicion? si pues lo ponemos en la matriz y actualizamos todo ,
 //que no se puede pues no hacemos nada y ya, aun asi seguimos necesitando la chuleta de saltos de cara que tenemos en el folio pero solo eso ( yo creo que sería igual en el fondo...)
   
-  delay(1000);
+  delay(2000);
   //dire =  random(1,5);
    if (Serial.available())
    {

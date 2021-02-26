@@ -17,7 +17,16 @@ faces[i].setBrightness(5);
 faces[i].begin();
 faces[i].show();
 }
+}
 
+void prueba(){
+
+  for (size_t i = 0; i < 63; i++)
+  {
+    m2.setPixelColor(i, m1.Color(54, 54, 0));
+    delay(50);m1.show();
+  }
+  
 }
 void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede reducir la funcion. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
 {
@@ -36,7 +45,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m1.setPixelColor(aux, m1.Color(150, 0, 0));
@@ -62,7 +71,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-          if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m1.setPixelColor(aux, m1.Color(150, 0, 0));
@@ -97,7 +106,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 2) //if( aux == (pos[1]*8 + pos[2] ))
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 2) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m2.setPixelColor(aux, m2.Color(150, 0, 0));
@@ -123,7 +132,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-          if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 2)//if( aux == (pos[1]*8 + pos[2] ))
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 2)//if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m2.setPixelColor(aux, m2.Color(150, 0, 0));
@@ -159,7 +168,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m3.setPixelColor(aux, m3.Color(150, 0, 0));
@@ -185,7 +194,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-         if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
+         if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m3.setPixelColor(aux, m3.Color(150, 0, 0));
@@ -221,7 +230,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 4) //if( aux == (pos[1]*8 + pos[2] ))
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 4) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m4.setPixelColor(aux, m4.Color(150, 0, 0));
@@ -247,7 +256,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-          if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 4)//if( aux == (pos[1]*8 + pos[2] ))
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 4)//if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m4.setPixelColor(aux, m4.Color(150, 0, 0));
@@ -283,7 +292,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 5) //if( aux == (pos[1]*8 + pos[2] ))
+             if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 5) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m5.setPixelColor(aux, m5.Color(150, 0, 0));
@@ -309,7 +318,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-          if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 5)//if( aux == (pos[1]*8 + pos[2] ))
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 5)//if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m5.setPixelColor(aux, m5.Color(150, 0, 0));
@@ -345,7 +354,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
           for(int j =7 ; j>=0 ; j-- ,aux++ )
           {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 6) //if( aux == (pos[1]*8 + pos[2] ))
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 6) //if( aux == (pos[1]*8 + pos[2] ))
                                           {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m6.setPixelColor(aux, m6.Color(150, 0, 0));
@@ -371,7 +380,7 @@ void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede 
         
         for(int j =0 ; j<8 ;j++ ,aux++ )
         {
-          if( (aux == ((posicion[1]+1)*8 -1 -posicion[2] ))  && posicion[0]== 6)//if( aux == (pos[1]*8 + pos[2] ))
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 6)//if( aux == (pos[1]*8 + pos[2] ))
                       {
                                             //poner ese punto en rojo , es nuestro jugador 
                                             m6.setPixelColor(aux, m6.Color(150, 0, 0));
@@ -648,7 +657,6 @@ void moverPunto(int posicion[3] ,int  direccion ){
       
     //actualixamos las matrices y nuesto punto tambien si no esta el punto acupado ws decir , que no haya una pared  
     Serial.print("no nos hemos salido asi que solamente actualizamos ");
-     
     actualizarTodo(posicion);//Esto estaba descomentado porque es redundante con el que esta dentro del case de switch pero no se 
     
   }//fin del if 
@@ -673,6 +681,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
               Serial.print(posicion[0]);
                 Serial.print(posicion[1]);
               Serial.println(posicion[2]);
+              Serial.print(devuelta);
 
   
             switch (devuelta)
@@ -689,7 +698,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
 
 
                      break ;
@@ -705,9 +714,9 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
-                    break;
+                  break;
                   }
                 
                 case 4 ://abajo
@@ -720,8 +729,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                      {actualizarTodo(posicion);}
                   
                       break;
 
@@ -737,7 +745,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                     
 
                     break;
@@ -765,8 +773,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                       {actualizarTodo(posicion);}
                      break;
                   }
                 
@@ -780,7 +787,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
 
                     break;
@@ -796,7 +803,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -812,7 +819,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -841,7 +848,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -857,7 +864,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
 
                     break;
@@ -873,7 +880,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -889,7 +896,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
 
@@ -918,7 +925,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -934,7 +941,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
                   
                   break;  
@@ -950,7 +957,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -966,7 +973,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -996,8 +1003,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                       {actualizarTodo(posicion);}
                      break;
                   }
                 
@@ -1011,7 +1017,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
                     break ;
                   }
@@ -1026,7 +1032,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -1044,7 +1050,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -1074,7 +1080,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -1091,7 +1097,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                     break;
@@ -1107,7 +1113,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
                   
                 break;
@@ -1125,7 +1131,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                     
 
                     break;
