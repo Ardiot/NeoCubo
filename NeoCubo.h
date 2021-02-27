@@ -9,7 +9,7 @@ Creada por Carlos Ardiot 2018-2021 Github:@Ardiot  Twitter:@Ardiot328
 
 
 
-void inicializar(Adafruit_NeoPixel faces[6],uint_t brillo ){
+void inicializar(Adafruit_NeoPixel faces[6],int brillo ){
 
 for (size_t i = 0; i < 6; i++)
 {
@@ -17,8 +17,445 @@ faces[i].setBrightness(5);
 faces[i].begin();
 faces[i].show();
 }
-
 }
+
+void prueba(){
+
+  for (size_t i = 0; i < 63; i++)
+  {
+    m2.setPixelColor(i, m1.Color(54, 54, 0));
+    delay(50);m1.show();
+  }
+  
+}
+void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede reducir la funcion. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
+{
+  Serial.print("\nactualizar todo ");
+  Serial.print(posicion[0]);
+    Serial.print(posicion[1]);
+  Serial.println(posicion[2]);
+
+  
+  
+  for (int i =0, aux =0 ; i< 8; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara1[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
+                                          }
+            
+          }
+     }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara1[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } // primer for 
+    m1.show();
+    
+    for (int i =0, aux =0 ; i< 8; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 2) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m2.setPixelColor(aux, m2.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara2[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m2.setPixelColor(aux, m2.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m2.setPixelColor(aux, m2.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 2)//if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m2.setPixelColor(aux, m2.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara2[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m2.setPixelColor(aux, m2.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m2.setPixelColor(aux, m2.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } //segundo for 
+    m2.show();
+    
+    
+    for (int i =0, aux =0 ; i< 8 ; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m3.setPixelColor(aux, m3.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara3[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m3.setPixelColor(aux, m3.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m3.setPixelColor(aux, m3.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+         if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m3.setPixelColor(aux, m3.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara3[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m3.setPixelColor(aux, m3.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m3.setPixelColor(aux, m3.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } //tercer for 
+    m3.show();
+    
+    
+    for (int i =0, aux =0 ; i< 8; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 4) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m4.setPixelColor(aux, m4.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara4[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m4.setPixelColor(aux, m4.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m4.setPixelColor(aux, m4.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 4)//if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m4.setPixelColor(aux, m4.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara4[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m4.setPixelColor(aux, m4.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m4.setPixelColor(aux, m4.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } //cuarto for 
+    m4.show();
+    
+    
+    for (int i =0, aux =0 ; i< 8; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+             if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 5) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m5.setPixelColor(aux, m5.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara5[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m5.setPixelColor(aux, m5.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m5.setPixelColor(aux, m5.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 5)//if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m5.setPixelColor(aux, m5.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara5[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m5.setPixelColor(aux, m5.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m5.setPixelColor(aux, m5.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } //quinto for 
+    m5.show();
+    
+    
+    for (int i =0, aux =0 ; i< 8; i++ ) 
+    {
+      //delay(500);
+      if(i%2 ==0 ) //si esta en fila par , cero es par 
+      {
+        
+          for(int j =7 ; j>=0 ; j-- ,aux++ )
+          {
+              if( (aux == ((posicion[1]+1)*8 -1- posicion[2] ))  && posicion[0]== 6) //if( aux == (pos[1]*8 + pos[2] ))
+                                          {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m6.setPixelColor(aux, m6.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                                          }
+                                            
+                                        else 
+                                          {
+                                            
+                                          if(cara6[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m6.setPixelColor(aux, m6.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m6.setPixelColor(aux, m6.Color(150, 50, 150));
+                                          }
+            
+          }
+      }
+      else 
+      {
+        
+        for(int j =0 ; j<8 ;j++ ,aux++ )
+        {
+          if( (aux == ((posicion[1])*8 +posicion[2] ))  && posicion[0]== 6)//if( aux == (pos[1]*8 + pos[2] ))
+                      {
+                                            //poner ese punto en rojo , es nuestro jugador 
+                                            m6.setPixelColor(aux, m6.Color(150, 0, 0));
+                                            Serial.println(aux);
+                                        Serial.println("el punto aux , encontrado  ");
+                        }
+                                            
+               else 
+                                          {
+                                            
+                                          if(cara6[i][j] ==0)
+                                            //pintar de blanco ese led
+                                            m6.setPixelColor(aux, m6.Color(0, 0, 0));
+                                          else
+                                            //pintar de negro ,  es una pared , un 1
+                                            m6.setPixelColor(aux, m6.Color(150, 50, 150));
+                                          }
+          
+        }
+        
+      }
+    
+      
+    } //quinto for 
+    m6.show();
+    //este es el que ahora mejor funciona , cada cara por separado en un for 
+    
+    
+  
+}
+//fin del actualizar 
+int devuelveDireccionSalida(int posicion[3]){ //Esta funcion solo la llamamos desde dentro de moverPunto, deberia ser privada
+  
+  if( posicion[2]<0 || posicion[2]>= N)   //si las filas estan mal , o menos 1 o 8 
+  {
+    if(posicion[2] <0 ) // si se nos ha salido por la izquierda 
+    {
+       posicion[2]++;
+       return 2; 
+      
+    }
+    else 
+      {
+      posicion[2]--;
+       return 1;  // derecha 
+        
+      }
+    
+    
+  }
+  else
+  { //mirar esto bien 
+    if(posicion[1] <0 ) // si se nos ha salido por la abajo  
+    {
+       posicion[1]++;
+       return 3; //arriba
+      
+    }
+    else 
+      {
+      posicion[1]--;
+       return 4; //abajo 
+        
+      }
+    
+    
+  }
+  Serial.print("\ndevuelve direccion salida  ");
+  Serial.print(posicion[0]);
+    Serial.print(posicion[1]);
+  Serial.println(posicion[2]);
+  
+}
+//fin de devuelve direccion 
+
 
 void moverPunto(int posicion[3] ,int  direccion ){
   Serial.print("ahora y ya estoy en mover el punto ");
@@ -220,7 +657,6 @@ void moverPunto(int posicion[3] ,int  direccion ){
       
     //actualixamos las matrices y nuesto punto tambien si no esta el punto acupado ws decir , que no haya una pared  
     Serial.print("no nos hemos salido asi que solamente actualizamos ");
-     
     actualizarTodo(posicion);//Esto estaba descomentado porque es redundante con el que esta dentro del case de switch pero no se 
     
   }//fin del if 
@@ -245,6 +681,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
               Serial.print(posicion[0]);
                 Serial.print(posicion[1]);
               Serial.println(posicion[2]);
+              Serial.print(devuelta);
 
   
             switch (devuelta)
@@ -261,7 +698,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
 
 
                      break ;
@@ -277,9 +714,9 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
-                    break;
+                  break;
                   }
                 
                 case 4 ://abajo
@@ -292,8 +729,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                      {actualizarTodo(posicion);}
                   
                       break;
 
@@ -309,7 +745,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                     
 
                     break;
@@ -337,8 +773,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                       {actualizarTodo(posicion);}
                      break;
                   }
                 
@@ -352,7 +787,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
 
                     break;
@@ -368,7 +803,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -384,7 +819,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -413,7 +848,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -429,7 +864,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
 
                     break;
@@ -437,15 +872,15 @@ void moverPunto(int posicion[3] ,int  direccion ){
                 
                 case 4 ://abajo nien 
                   { 
-                    if( cara6[posicion[2]][0] != 1 ) // si nos podemos mover 
+                    if( cara6[posicion[2]][N-1] != 1 ) // si nos podemos mover 
                     {
                       posicion[0]=6 ;
                       posicion[1]=posicion[2] ;   
-                      posicion[2] = 0 ;
+                      posicion[2] = N-1 ;
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -461,7 +896,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
 
@@ -490,7 +925,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -506,7 +941,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
                   
                   break;  
@@ -522,7 +957,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -538,7 +973,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -568,8 +1003,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
-
+                       {actualizarTodo(posicion);}
                      break;
                   }
                 
@@ -578,12 +1012,13 @@ void moverPunto(int posicion[3] ,int  direccion ){
                   if( cara3[ 0][N-1-posicion[1] ] != 1 ) // si nos podemos mover 
                     {
                       posicion[0]=3; //cara 1 
-                      posicion[1]=0;   
                       posicion[2]=N-1- posicion[1] ;
+                      posicion[1]=0;   
+                      
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                   
                     break ;
                   }
@@ -598,7 +1033,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                 break;
@@ -616,7 +1051,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
                     
 
                     break;
@@ -646,7 +1081,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
 
                      break;
@@ -663,7 +1098,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                     // actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                   
 
                     break;
@@ -679,7 +1114,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                       {actualizarTodo(posicion);}
 
                   
                 break;
@@ -697,7 +1132,7 @@ void moverPunto(int posicion[3] ,int  direccion ){
                       actualizarTodo(posicion);
                     }
                     else
-                      //actualizarTodo(posicion);
+                      {actualizarTodo(posicion);}
                     
 
                     break;
@@ -726,419 +1161,6 @@ void moverPunto(int posicion[3] ,int  direccion ){
   
 }
 
-int devuelveDireccionSalida(int posicion[3]){ //Esta funcion solo la llamamos desde dentro de moverPunto, deberia ser privada
-  
-  if( posicion[2]<0 || posicion[2]>= N)   //si las filas estan mal , o menos 1 o 8 
-  {
-    if(posicion[2] <0 ) // si se nos ha salido por la izquierda 
-    {
-       posicion[2]++;
-       return 2; 
-      
-    }
-    else 
-      {
-      posicion[2]--;
-       return 1;  // derecha 
-        
-      }
-    
-    
-  }
-  else
-  { //mirar esto bien 
-    if(posicion[1] <0 ) // si se nos ha salido por la abajo  
-    {
-       posicion[1]++;
-       return 3; //arriba
-      
-    }
-    else 
-      {
-      posicion[1]--;
-       return 4; //abajo 
-        
-      }
-    
-    
-  }
-  Serial.print("\ndevuelve direccion salida  ");
-  Serial.print(posicion[0]);
-    Serial.print(posicion[1]);
-  Serial.println(posicion[2]);
-  
-}
-//
 
-void actualizarTodo(int posicion[3] )//Si lo de caras funciona entonce se puede reducir la funcion. Si todos los for son iguales, solo cambia el m1 m2 ... m6 meterlo en una funcion y enviarle el objeto 
-{
-  Serial.print("\nactualizar todo ");
-  Serial.print(posicion[0]);
-    Serial.print(posicion[1]);
-  Serial.println(posicion[2]);
 
-  
-  
-  for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara1[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 1) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m1.setPixelColor(aux, m1.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara1[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m1.setPixelColor(aux, m1.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m1.setPixelColor(aux, m1.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } // primer for 
-    m1.show();
-    
-    for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 2) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m2.setPixelColor(aux, m2.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara2[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m2.setPixelColor(aux, m2.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m2.setPixelColor(aux, m2.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 2) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m2.setPixelColor(aux, m2.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara2[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m2.setPixelColor(aux, m2.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m2.setPixelColor(aux, m2.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } //segundo for 
-    m2.show();
-    
-    
-    for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m3.setPixelColor(aux, m3.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara3[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m3.setPixelColor(aux, m3.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m3.setPixelColor(aux, m3.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 3) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m3.setPixelColor(aux, m3.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara3[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m3.setPixelColor(aux, m3.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m3.setPixelColor(aux, m3.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } //tercer for 
-    m3.show();
-    
-    
-    for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 4) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m4.setPixelColor(aux, m4.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara4[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m4.setPixelColor(aux, m4.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m4.setPixelColor(aux, m4.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 4) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m4.setPixelColor(aux, m4.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara4[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m4.setPixelColor(aux, m4.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m4.setPixelColor(aux, m4.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } //cuarto for 
-    m4.show();
-    
-    
-    for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 5) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m5.setPixelColor(aux, m5.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara5[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m5.setPixelColor(aux, m5.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m5.setPixelColor(aux, m5.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 5) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m5.setPixelColor(aux, m5.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara5[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m5.setPixelColor(aux, m5.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m5.setPixelColor(aux, m5.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } //quinto for 
-    m5.show();
-    
-    
-    for (int i =0, aux =0 ; i< 8 ; i++ ) 
-    {
-      //delay(500);
-      if(i%2 ==0 ) //si esta en fila par , cero es par 
-      {
-        
-          for(int j =7 ; j>=0 ; j-- ,aux++ )
-          {
-              if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 6) //if( aux == (pos[1]*8 + pos[2] ))
-                                          {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m6.setPixelColor(aux, m6.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                                          }
-                                            
-                                        else 
-                                          {
-                                            
-                                          if(cara6[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m6.setPixelColor(aux, m6.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m6.setPixelColor(aux, m6.Color(150, 50, 150));
-                                          }
-            
-          }
-      }
-      else 
-      {
-        
-        for(int j =0 ; j<8 ;j++ ,aux++ )
-        {
-          if( (aux == (posicion[1]*8 + posicion[2] ))  && posicion[0]== 6) //if( aux == (pos[1]*8 + pos[2] ))
-                      {
-                                            //poner ese punto en rojo , es nuestro jugador 
-                                            m6.setPixelColor(aux, m6.Color(150, 0, 0));
-                                        Serial.println("el punto aux , encontrado  ");
-                        }
-                                            
-               else 
-                                          {
-                                            
-                                          if(cara6[i][j] ==0)
-                                            //pintar de blanco ese led
-                                            m6.setPixelColor(aux, m6.Color(0, 0, 0));
-                                          else
-                                            //pintar de negro ,  es una pared , un 1
-                                            m6.setPixelColor(aux, m6.Color(150, 50, 150));
-                                          }
-          
-        }
-        
-      }
-    
-      
-    } //quinto for 
-    m6.show();
-    //este es el que ahora mejor funciona , cada cara por separado en un for 
-    
-    
-  
-}
 //fin de todo

@@ -89,7 +89,7 @@ int cara6 [8][8]={  {0,0,0,0,0,0,0,0},
           {1,1,1,1,1,1,1,1},
           {1,1,1,1,1,1,1,1} };   
 
-int caras[6][8][8]={cara1,cara2,cara3,cara4,cara5,cara6};
+
 int N = 8; 
 int posicion[3]={1,6,4};
 int dire;
