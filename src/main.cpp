@@ -11,7 +11,7 @@
 #include <ctype.h>
 
 
-#define PIN1   D3 //antes era de 6 a 11
+#define PIN1    D3 //antes era de 6 a 11
 #define PIN2    D4
 #define PIN3    D5
 #define PIN4    D6
@@ -101,20 +101,16 @@ int brillo=100;//A 30 consume 0.3A y a 60 1,5A
 Serial.begin(9600);
 
   inicializar(neofaces,brillo);
-  prueba();
+ // prueba();
   actualizarTodo(posicion);
    
 }
    
    
 void loop()
-{//tenemos alguna funcion para poner algun punto en un sitio dado directamente???
-//si hacemos una de esas alomejor solo con esa que pone el punto y despues con logica de programacion ya todo aunqeu alomejor lo que estamos haciendo es lo mismo
-// es decir solo actuamos sobre las matrices y las vamos pintando, rollo se puede pintar el nuevo punto en la nueva posicion? si pues lo ponemos en la matriz y actualizamos todo ,
-//que no se puede pues no hacemos nada y ya, aun asi seguimos necesitando la chuleta de saltos de cara que tenemos en el folio pero solo eso ( yo creo que sería igual en el fondo...)
+{
+  delay(500);
   
-  delay(2000);
-  //dire =  random(1,5);
    if (Serial.available())
    {
      char direaux = Serial.read();
@@ -141,12 +137,6 @@ void loop()
   }
 
 
-  //dire =  1;
-  //probar esto en vez de poniendolo random poniendolo como entrada por el monitor serial 
- // Serial.print( "lo movemos en la direccion : " );
-//  Serial.print("despues va el moverPunto \n ");
- // moverPunto(posicion,dire);
-  
     
    }
    

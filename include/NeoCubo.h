@@ -872,11 +872,11 @@ void moverPunto(int posicion[3] ,int  direccion ){
                 
                 case 4 ://abajo nien 
                   { 
-                    if( cara6[posicion[2]][0] != 1 ) // si nos podemos mover 
+                    if( cara6[posicion[2]][N-1] != 1 ) // si nos podemos mover 
                     {
                       posicion[0]=6 ;
                       posicion[1]=posicion[2] ;   
-                      posicion[2] = 0 ;
+                      posicion[2] = N-1 ;
                       actualizarTodo(posicion);
                     }
                     else
@@ -1012,8 +1012,9 @@ void moverPunto(int posicion[3] ,int  direccion ){
                   if( cara3[ 0][N-1-posicion[1] ] != 1 ) // si nos podemos mover 
                     {
                       posicion[0]=3; //cara 1 
-                      posicion[1]=0;   
                       posicion[2]=N-1- posicion[1] ;
+                      posicion[1]=0;   
+                      
                       actualizarTodo(posicion);
                     }
                     else
